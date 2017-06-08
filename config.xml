@@ -7,9 +7,9 @@
 
     <!-- versionCode is optional and Android only -->
 
-	 <preference name="phonegap-version" value="3.1.0" />
+	 <preference name="phonegap-version" value="cli-6.4.0" />
 	
-    <name>Dangerous Goods ALPHA</name>
+    <name>Dangerous Goods 2017</name>
 
 	<icon src="icon.png" />
 	
