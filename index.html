@@ -33,6 +33,8 @@
             var list2classnum = 'null';
             var dgchoice1 = '';
             var dgchoice2 = '';
+            var imgSRC1 = '';
+            var imgSRC2 = '';
 
             function setitem(item) {
                 dgitem = item;
@@ -49,6 +51,7 @@
                     $('#list1desc').text(desc);
                     list1classnum = selectclass;
                     dgchoic1 = title;
+                    imgSRC1 = img;
                 }
                 else if (dgitem === 'list2') {
                     $('#list2name').text(title);
@@ -56,6 +59,7 @@
                     $('#list2desc').text(desc);
                     list2classnum = selectclass;
                     dgchoice2 = title;
+                    imgSRC2 = img;
                 }
             }
 
@@ -67,6 +71,11 @@
                     $("#answer").html(' <h1><strong>You Must Select Two Dangerous Goods to Transport</strong></h1>');
                 }
                 else {
+
+                    $('#imglist1img').attr("src", imgSRC1);
+                    $('#imglist2img').attr("src", imgSRC2);
+
+
 
                     var exception1 = "Explosives are incompatible in transport with all other dangerous goods in all quantities except as provided in the Australian Explosives Code or, for Division 1.4S, provided the aggregate quantity of all dangerous goods in the transport unit does not exceed 1000 kg(L)";
                     var exception2 = "Division 2.1 and Class 3 are incompatible in transport if both are in tanks or other receptacles with a capacity individually exceeding 500L.";
@@ -361,10 +370,13 @@
                             break;
                     }
 
-                    $("#answer").html(' <h1>Transport Products</h1><p> You want to Transport <strong>' + dgchoic1 + '</strong> with <strong> ' + dgchoice2 + ' </strong> <h2>Compatability</h2>' + compatability + exceptionoutput);
+                    $("#answer").html('<p> You want to Transport <strong>' + dgchoic1 + '</strong> with <strong> ' + dgchoice2 + ' </strong> <h2>Compatability</h2>' + compatability + exceptionoutput);
                 }
             }
-
+            
+            function setitem(item) {
+                dgitem = item;
+            }
 
         </script>
 
@@ -375,7 +387,7 @@
         <div data-role ="page" id ="disclaimer">
 
             <div data-role ="content">
-                <img src="img/123DGAwareness.jpg" alt="123DGAwareness"/>  
+                <img src="img/123DGAwareness.jpg" alt="123DGAwareness"/> 
                 <h1>Disclaimer!!!!!!</h1>
                 <p>The information herein is provided <strong>ONLY</strong> as a reference for the safe transportation of Dangerous Goods</p>
                 <p>While we endeavour to provide quality and up-to-date information about Dangerous Goods Transportation, we make no guarantees about the accuracy, completeness, or adequacy of the information contained herein.</p>
@@ -383,7 +395,7 @@
                 <p><Strong>If any doubt refer to your relevant country, state or territories legislation.</Strong></p>
                 <p><a href="#dgcompare" data-role="button" data-theme="e">Ok Got It!</a></p>
 
-               
+
 
                 <table cellpadding="12" cellspacing="0" style="width:100%;margin-top:36px;border-radius:10px;background-color: #d9534f;">
                     <tr>
@@ -429,8 +441,6 @@
                         </td>
                     </tr>
                 </table>
-
-
             </div>
 
         </div>
@@ -471,9 +481,18 @@
             <div data-role="content" >
                 <img src="img/123DGAwareness.jpg" alt="123DGAwareness"/> 
                 <br>
-                <div id ="answer">
-
+                <h1>Transport Products</h1>
+                <div>
+                    <img style = "width: 45%;float:left;" src ="img/Question.png" id ="imglist1img">
+                    <img style = "width: 45%; float:right;"  src ="img/Question.png" id ="imglist2img"> 
                 </div>
+                <br>
+                <p style="clear: both;">
+                <div id ="answer"></div>
+                <div id ="compatable"></div>
+                <div id ="incompatable"></div>
+                <div id ="exemption"></div>
+
                 <a href="#dgcompare" data-role="button" data-theme="e">Select Classes</a>
             </div>
 
