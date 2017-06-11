@@ -97,24 +97,13 @@
                     var compatableWithExceptionsText = "These products are compatable - However, See Exception";
                     switch (list1) {
                         case '1':
-                            if (list2 === '1') {
-                                //New Output  
-                                setCompatable(defaultCompatabilityText);
-                                hideExemption();
+                            //New Output        
+                            setIncompatable(incompatableWithExceptionsText);
+                            setException(exception1);
 
-                                //Old Output
-                                compatability = "<p><strong>Compatable</strong></p>";
-                                exceptionoutput = "";
-                            }
-                            else {
-                                //New Output        
-                                setIncompatable(incompatableWithExceptionsText);
-                                setException(exception1);
-
-                                //Old Output
-                                compatability = "<p><strong>Incompatable!</strong></p>";
-                                exceptionoutput = "<h2>Exceptions</h2><p>" + exception1 + "</p>";
-                            }
+                            //Old Output
+                            compatability = "<p><strong>Incompatable!</strong></p>";
+                            exceptionoutput = "<h2>Exceptions</h2><p>" + exception1 + "</p>";
                             break;
                         case '2.1':
                             if (list2 === '2.1' || list2 === '2.3' || list2 === '6' || list2 === '8' || list2 === '9' || list2 === 'A' || list2 === 'B') {
@@ -146,7 +135,7 @@
                             }
                             else if (list2 === '1') {
                                 //New Output  
-                                setIncompatable(incompatableWithExceptionsText);
+                                setCompatable(compatableWithExceptionsText);
                                 setException(exception1);
 
                                 //Old Output                                
@@ -194,7 +183,7 @@
                             }
                             else if (list2 === '1') {
                                 //New Output  
-                                setIncompatable(incompatableWithExceptionsText);
+                                setCompatable(compatableWithExceptionsText);
                                 setException(exception1);
 
                                 //Old Output 
@@ -697,7 +686,7 @@
                             break;
                     }
 
-                   // $("#answer").html('<p> You want to Transport <strong>' + dgchoic1 + '</strong> with <strong> ' + dgchoice2 + ' </strong> <h2>Compatability</h2>' + compatability + exceptionoutput);
+                    $("#answer").html('<p> You want to Transport <strong>' + dgchoic1 + '</strong> with <strong> ' + dgchoice2 + ' </strong> <h2>Compatability</h2>' + compatability + exceptionoutput);
                     $("#comparisonOutput").html('<p> You want to Transport <strong>' + dgchoic1 + '</strong> with <strong> ' + dgchoice2 + '</p>');
 
 
@@ -728,7 +717,10 @@
             function hideExemption() {
                 $("#exceptionOutput").hide();
             }
-         
+
+            function showthing() {
+                $("#compatabilityOutput").toggle();
+            }
 
         </script>
 
@@ -746,6 +738,53 @@
                 <p>The information provided is subject to change, and may not directly reflect your specific governing legislation.</p>
                 <p><Strong>If any doubt refer to your relevant country, state or territories legislation.</Strong></p>
                 <p><a href="#dgcompare" data-role="button" data-theme="e">Ok Got It!</a></p>
+
+
+
+                <table cellpadding="12" cellspacing="0" style="width:100%;margin-top:36px;border-radius:10px;background-color: #d9534f;">
+                    <tr>
+                        <td width="52" align="right">
+                            <img width="40" style="margin:0;border:0" src="img/cross_web2.png" title="Tick" alt="Tick" />
+                        </td>
+                        <td>
+                            <h2 style="text-shadow:none;color: white;">
+
+                                These products are NOT compatable
+
+                            </h2>
+                        </td>
+                    </tr>
+                </table>
+
+                <table cellpadding="12" cellspacing="0" style="width:100%;margin-top:36px;border-radius:10px;background-color: #1D9A59;">
+                    <tr>
+                        <td width="52" align="right">
+                            <img width="40" style="margin:0;border:0" src="img/Tick-test2.png" title="Tick" alt="Tick" />
+                        </td>
+                        <td>
+                            <h2 style="text-shadow:none;color: white;">
+
+                                These products are compatable
+
+                            </h2>
+                        </td>
+                    </tr>
+                </table>
+
+                <table cellpadding="12" cellspacing="0" style="width:100%;margin-top:36px;border-radius:10px;background-color: #f0ad4e;">
+                    <tr>
+                        <td width="52" align="right">
+                            <img width="40" style="margin:0;border:0" src="img/question_1.png" title="Tick" alt="Tick" />
+                        </td>
+                        <td>
+                            <h2 style="text-shadow:none;color: white;">
+
+                                These products are only compatable if XXX Example
+
+                            </h2>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
         </div>
@@ -834,10 +873,50 @@
                         </table>
                     </div>
                 </div>
+                <hr>
+                <hr>
+                <hr>
+
+                <br>
+
+                <div id ="answer"></div>
+                <div id ="comparisonOutput"></div>
+                <div id ="comparisonOutput">
+                    <h2>Compatability</h2>
+                    <div id ="test3">
+
+                        <table cellpadding="12" cellspacing="0" style="width:100%;margin-top:36px;border-radius:10px;background-color: #d9534f;">
+                            <tr>
+                                <td width="52" align="right">
+                                    <img width="40" style="margin:0;border:0" src="img/cross_web2.png" title="Tick" alt="Tick" />
+                                </td>
+                                <td>
+                                    <h2 style="text-shadow:none;color: white;">
+
+                                        These products are NOT compatable
+
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div id ="compatable"></div>
+                <div id ="incompatable"></div>
+                <div id ="exemption"></div>
+
                 <a href="#dgcompare" data-role="button" data-theme="e">Select Classes</a>
+                <a href="#" data-role="button" data-theme="e" onclick ="setCompatable();">Set Compatable</a>
+                <a href="#" data-role="button" data-theme="e" onclick ="setIncompatable();">Set Incompatable</a>
+                <a href="#" data-role="button" data-theme="e" onclick ="setException();">Set Exception</a>
+                <a href="#" data-role="button" data-theme="e" onclick ="showthing();">Toggle</a>
+                <a href="#" data-role="button" data-theme="e" onclick ="$('#compatabilityOutput').hide();">Hide</a>
+                <a href="#" data-role="button" data-theme="e" onclick ="$('#compatabilityOutput').show();">Show</a>
             </div>
 
         </div>
+
 
         <div data-role="page" id ="dglist">
 
